@@ -6,15 +6,40 @@
     <title>Multi-color stroboscope</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
 </head>
-<body>
+<body id="corps">
     <br>
     <br>
     <br>
     <br>
     <br>
-    <input type="button" value="Start"
+    <button onclick="start()">Start</button>
+	<button onclick="stop()">Stop</button>
+	<button onclick="blanc()">Blanc</button>
+	
 </body>
 </html>
 
+<script>
+var couleurs = ["red","blue","green","pink","yellow","orange","white","black","purple"];
+var i;
+var stop;
+var timer;
+function Random(max){
+	return Math.floor(Math.random() * Math.floor(max));
+}
+
+function start(){
+	i = Random(9);
+	document.getElementById("corps").style.backgroundColor=couleurs[i];
+	timer = setTimeout(start,10);
+}
+
+function stop(){
+	clearTimeout(timer);
+}
+function blanc(){
+	clearTimeout(timer);
+	document.getElementById("corps").style.backgroundColor="white";
+}
+</script>
